@@ -9,7 +9,7 @@
 	<input name="commit" type="submit" value="Create" data-disable-with="Create" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 </form> -->
-<%= form_tag(users_path) do %>
+<!--<%= form_tag(users_path) do %>
   <%= label_tag(:username, "Username:") %>
   <%= text_field_tag(:username, @user.username) %>
   <%= label_tag(:email,"Email:") %>
@@ -17,4 +17,15 @@
   <%= label_tag(:password, "Password:") %>
   <%= password_field_tag(:password, @user.password) %>
   <%= submit_tag("Create") %>
+<% end %>-->
+<%= form_with model: @user do |form| %>
+  <%= form.label :username, "Your user name here" %>:
+  <%= form.text_field :username %><br />
+
+  <%= form.label :email, "Your email here" %>:
+  <%= form.text_field :email, placeholder: "user@gmail.com" %><br />
+  
+  <%= form.label :password, "Your password here" %>:
+  <%= form.password_field :password %><br />
+  <%= form.submit "Create" %>
 <% end %>
